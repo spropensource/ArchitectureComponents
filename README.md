@@ -34,7 +34,6 @@ benefit from sharing an app architecture.
 
 Next steps:
 
-- Enable Carthage and CocoaPods installation
 - Improve automated test coverage
 - Provide full documentation comments
 - Improve README with getting started information
@@ -49,6 +48,7 @@ Completed:
 
 - Implement Lifecycle components
 - Implement LiveData components
+- Enable Carthage and CocoaPods installation
 
 
 ## Code of Conduct
