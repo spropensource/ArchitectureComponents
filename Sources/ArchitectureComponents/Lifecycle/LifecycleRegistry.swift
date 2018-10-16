@@ -162,7 +162,7 @@ public class LifecycleRegistry: Lifecycle {
     private func notifyObserversOfEvent(_ event: LifecycleEvent) {
         guard let owner = self.owner else { return }
 
-        let activeObservers = self.weakObservers.flatMap({ $0.lifecycleObserver })
+        let activeObservers = self.weakObservers.compactMap({ $0.lifecycleObserver })
         for observer in activeObservers {
             switch event {
             case .create:  observer.onCreate(owner: owner)

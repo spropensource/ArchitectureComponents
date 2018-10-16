@@ -23,7 +23,7 @@ open class LifecycleTableViewController: UITableViewController, LifecycleOwner {
 
     // MARK: Properties
 
-    private var lifecycleAppState: UIApplicationState = .inactive
+    private var lifecycleAppState: UIApplication.State = .inactive
     private var lifecycleViewDisplayed: Bool = false
 
     // This property is defined as lazy to work-around Swift initialization
@@ -113,32 +113,32 @@ open class LifecycleTableViewController: UITableViewController, LifecycleOwner {
         center.addObserver(
             self,
             selector: #selector(LifecycleTableViewController.handleApplicationStateChangeNotification(_:)),
-            name: .UIApplicationDidBecomeActive,
+            name: UIApplication.didBecomeActiveNotification,
             object: app
         )
         center.addObserver(
             self,
             selector: #selector(LifecycleTableViewController.handleApplicationStateChangeNotification(_:)),
-            name: .UIApplicationDidEnterBackground,
+            name: UIApplication.didEnterBackgroundNotification,
             object: app
         )
         center.addObserver(
             self,
             selector: #selector(LifecycleTableViewController.handleApplicationStateChangeNotification(_:)),
-            name: .UIApplicationWillEnterForeground,
+            name: UIApplication.willEnterForegroundNotification,
             object: app
         )
         center.addObserver(
             self,
             selector: #selector(LifecycleTableViewController.handleApplicationStateChangeNotification(_:)),
-            name: .UIApplicationWillResignActive,
+            name: UIApplication.willResignActiveNotification,
             object: app
         )
     }
 
     // MARK: Private (Lifecycle State Change)
 
-    internal static func lifecycleStateForVCState(appState: UIApplicationState, viewDisplayed: Bool) -> LifecycleState {
+    internal static func lifecycleStateForVCState(appState: UIApplication.State, viewDisplayed: Bool) -> LifecycleState {
         // DEVELOPER NOTE: This method has `internal` access to allow for
         // automated testing.
 
